@@ -3,6 +3,7 @@ body {
 }
 .wrapper {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -36,10 +37,10 @@ body {
 .main__won-message {
     margin: 0 auto;
 }
-.main__level{
-text-align: center;
-margin: 0px 0px 10px 0px;
-font-size: 20px;
+.main__level {
+    text-align: center;
+    margin: 0px 0px 10px 0px;
+    font-size: 20px;
 }
 .hide {
     position: absolute;
@@ -133,53 +134,7 @@ font-size: 20px;
 .won__button-text {
     font-size: 18px;
 }
-
-@media (width < 768px) {
-    .level__one {
-        width: 300px;
-    }
-    .level__two {
-        width: 400px;
-    }
-    .level__three {
-        width: 400px;
-    }
-    .card,
-    .flip-container,
-    .front,
-    .back {
-        width: 88px;
-        height: 110px;
-    }
-
-}
-@media (width < 442px)  {
-    .level__one {
-        width: 230px;
-    }
-    .level__two {
-        width: 230px;
-    }
-    .level__three {
-        width: 280px;
-    }
-    .card,
-    .flip-container,
-    .front,
-    .back {
-        width: 60px;
-        height: 80px;
-    }
-        .main__won-message {
-        width: 200px;
-        height: 300px;
-    }
-    .won__level {
-        font-size: 18px;
-
-    }
-}
-@media (width < 315px)  {
+@media (min-width: 50px) {
     .level__one {
         width: 180px;
     }
@@ -196,7 +151,7 @@ font-size: 20px;
         width: 46px;
         height: 60px;
     }
-        .main__won-message {
+    .main__won-message {
         width: 200px;
         height: 300px;
     }
@@ -205,5 +160,68 @@ font-size: 20px;
     }
     .header__title {
         font-size: 20px;
+    }
+}
+
+@media (min-width: 330px) {
+    .level__one {
+        width: 230px;
+    }
+    .level__two {
+        width: 230px;
+    }
+    .level__three {
+        width: 280px;
+    }
+    .card,
+    .flip-container,
+    .front,
+    .back {
+        width: 60px;
+        height: 80px;
+    }
+    .main__won-message {
+        width: 200px;
+        height: 300px;
+    }
+    .won__level {
+        font-size: 18px;
+    }
+}
+
+@media  (min-width: 492px)  {
+    .level__one {
+        width: 300px;
+    }
+    .level__two {
+        width: 400px;
+    }
+    .level__three {
+        width: 400px;
+    }
+    .card,
+    .flip-container,
+    .front,
+    .back {
+        width: 88px;
+        height: 110px;
+    }
+}
+@media  (min-width: 892px)  {
+    .level__one {
+        width: 450px;
+    }
+    .level__two {
+        width: 550px;
+    }
+    .level__three {
+        width: 660px;
+    }
+    .card,
+    .flip-container,
+    .front,
+    .back {
+        width: 120px;
+        height: 160px;
     }
 }
