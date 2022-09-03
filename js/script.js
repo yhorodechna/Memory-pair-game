@@ -59,10 +59,13 @@ let LEVEL = 1;
 let ALL_MOVES = 0;
 let CORRECT_MOVES = 0;
 let ACCURACY;
+const MAIN_LEVEL = document.querySelector('#main__level');
+
 
 function startGame() {
     MAIN_GAME_BOARD_EL.classList.remove('hide')
     MAIN_WON_MESSAGE.classList.add('hide')
+    MAIN_LEVEL.innerHTML=`Level ${LEVEL}` 
     ACTIVE_CARDS = [];
     HIDDEN_CARDS = 0
     while (MAIN_GAME_BOARD_EL.firstChild) {
@@ -162,6 +165,7 @@ function onClick(event) {
         if (HIDDEN_CARDS === cards.length) {
             MAIN_WON_MESSAGE.classList.remove('hide')
             ACCURACY = Math.floor((100 * CORRECT_MOVES) / ALL_MOVES);
+            MAIN_LEVEL.innerHTML='' 
             console.log('win');
             hideGameBoard()
             createPlayerWonMessage()

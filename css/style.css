@@ -37,7 +37,11 @@ body {
 .main__won-message {
     margin: 0 auto;
 }
-
+.main__level{
+text-align: center;
+margin: 0px 0px 10px 0px;
+font-size: 20px;
+}
 .hide {
     position: absolute;
     left: -1000px;
@@ -50,8 +54,6 @@ body {
     justify-content: space-around;
     padding: 5px;
     align-items: center;
-}
-.main__score-board {
 }
 
 .flip-container {
@@ -112,7 +114,7 @@ body {
     height: 100%;
 }
 .won__level {
-    font-size: 28px;
+    font-size: 24px;
     padding: 10px;
     margin: 0px 0px 40px 0px;
 }
@@ -150,6 +152,7 @@ body {
         width: 88px;
         height: 110px;
     }
+
 }
 @media (width < 442px) {
     .level__one {
@@ -167,5 +170,13 @@ body {
     .back {
         width: 60px;
         height: 80px;
+    }
+        .main__won-message {
+        width: 200px;
+        height: 300px;
+    }
+    .won__level {
+        font-size: 18px;
+
     }
 }
