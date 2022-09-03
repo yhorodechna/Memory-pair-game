@@ -6,21 +6,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width , initial-scale=1.0" />
 
-    <link rel="stylesheet" href="null_style.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/null_style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
     <div class="wrapper">
         <header class="header">
-            <h1>Memory Pair Game</h1>
+            <h1 class="header__title">Memory Pair Game</h1>
         </header>
-        <main class="main">
-            <div class="main__game-board"></div>
-            <div class="main__score-board"></div>
+        <main id="main" class="main">
+            <div id="main__score-board"></div>            
+            <div id="main__game-board" class="main__game-board"></div>
+            <div id="main__won-message" class="main__won-message"></div>
         </main>
     </div>
-
 
     <script src="js/script.js"></script>
 </body>
