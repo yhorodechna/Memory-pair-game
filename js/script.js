@@ -74,7 +74,6 @@ function createPlayerWonMessage({ level, allMoves, accuracy, mainWonMessage }) {
 
 function fillGameBoard(data) {
     let dataCards = [];
-
     for (let i = 0; i < data.length; i++) {
         let numberOfSimilarCards = 2;
         while (numberOfSimilarCards != 0) {
@@ -90,9 +89,7 @@ function fillGameBoard(data) {
             mainGameBoardEl: MAIN_GAME_BOARD_EL
         })
     };
-
 };
-
 
 function onClick(event) {
     const cards = document.querySelectorAll('.flip-container');
@@ -115,7 +112,6 @@ function onClick(event) {
             MAIN_WON_MESSAGE.classList.remove('hide');
             ACCURACY = Math.floor((100 * CORRECT_MOVES) / ALL_MOVES);
             MAIN_LEVEL.innerHTML = '';
-            console.log('win');
             hideGameBoard();
             createPlayerWonMessage({
                 level: LEVEL,
@@ -127,7 +123,7 @@ function onClick(event) {
         };
     };
     while (current) {
-        if (current.className && current.className.includes('back')) {
+        if (current.className && current.className.includes('back') || current.className && current.className.includes('active')) {
             return;
         } else if (current.className && current.className.includes('flip-container')) {
             if (ACTIVE_CARDS.length < 2) {
