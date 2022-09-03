@@ -181,7 +181,7 @@ font-size: 20px;
 } */
 @media (width < 515px)  {
     .level__one {
-        width: 180px;
+        width: 140px;
     }
     .level__two {
         width: 220px;
@@ -193,8 +193,8 @@ font-size: 20px;
     .flip-container,
     .front,
     .back {
-        width: 46px;
-        height: 60px;
+        width: 36px;
+        height: 50px;
     }
         .main__won-message {
         width: 200px;
