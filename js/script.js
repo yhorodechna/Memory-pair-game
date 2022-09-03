@@ -56,11 +56,20 @@ const LEVEL_THREE = [...DATA.levelOne, ...DATA.levelTwo, ...DATA.levelThree];
 const MAIN = document.querySelector('#main');
 const MAIN_GAME_BOARD_EL = document.querySelector('#main__game-board');
 let LEVEL = 1;
+let ALL_MOVES = 0;
+let CORRECT_MOVES = 0;
+let ACCURACY;
 
 function startGame() {
     MAIN_GAME_BOARD_EL.classList.remove('hide')
+    MAIN_WON_MESSAGE.classList.add('hide')
+    ACTIVE_CARDS = [];
+    HIDDEN_CARDS = 0
     while (MAIN_GAME_BOARD_EL.firstChild) {
         MAIN_GAME_BOARD_EL.removeChild(MAIN_GAME_BOARD_EL.firstChild)
+    }
+    while (MAIN_GAME_BOARD_EL.firstChild) {
+        MAIN_WON_MESSAGE.removeChild(MAIN_WON_MESSAGE.firstChild)
     }
     if (LEVEL === 1) {
         fillGameBoard(LEVEL_ONE);
@@ -98,15 +107,17 @@ function createGameCard(num, id) {
 
 
 const MAIN_WON_MESSAGE = document.querySelector('#main__won-message');
+
 function createPlayerWonMessage() {
     const mainWonHtml = `
         <div class="won__message">
-            <span class="won__level" >Level ${LEVEL}</span>
-            <span class="won__text" >Completed!</span>
+            <span class="won__level" >Level ${LEVEL} Completed!</span>
+            <span class="won__moves" > You do ${ALL_MOVES} moves</span>
+            <span class="won__accuracy" > Your accuracy ${ACCURACY}% </span>
             <button class="won__button" ><span class="won__button-text" >Go to the next level</span></button>
         </div>
         `;
-    MAIN_WON_MESSAGE.innerHTML += mainWonHtml;
+    MAIN_WON_MESSAGE.innerHTML = mainWonHtml;
 };
 
 function fillGameBoard(data) {
@@ -131,9 +142,10 @@ let HIDDEN_CARDS = 0
 
 function onClick(event) {
     const cards = document.querySelectorAll('.flip-container');
-
+    console.log()
+    console.log()
     let current = event.target;
-    console.log(current)
+
     function removeActiveClass() {
         cards.forEach(card => card.classList.remove('active'))
         ACTIVE_CARDS = [];
@@ -148,13 +160,16 @@ function onClick(event) {
             MAIN_GAME_BOARD_EL.classList.add('hide')
         }
         if (HIDDEN_CARDS === cards.length) {
+            MAIN_WON_MESSAGE.classList.remove('hide')
+            ACCURACY = Math.floor((100 * CORRECT_MOVES) / ALL_MOVES);
             console.log('win');
             hideGameBoard()
             createPlayerWonMessage()
             return;
         };
     };
-
+    console.log(cards.length)
+    console.log(HIDDEN_CARDS)
 
     while (current) {
         if (current.className && current.className.includes('flip-container')) {
@@ -163,17 +178,20 @@ function onClick(event) {
                 ACTIVE_CARDS.push(current);
             };
             if (ACTIVE_CARDS.length === 2 && ACTIVE_CARDS[0].id === ACTIVE_CARDS[1].id) {
-                MAIN_WON_MESSAGE.classList.remove('hide')
+                ALL_MOVES++
+                CORRECT_MOVES++
+
                 setTimeout(addHiddenClass, 1000);
                 return;
             };
             if (ACTIVE_CARDS.length === 2 && ACTIVE_CARDS[0].id !== ACTIVE_CARDS[1].id) {
+                ALL_MOVES++
                 setTimeout(removeActiveClass, 1000);
                 return;
             };
         } else if (current.className && current.className.includes('won__button')) {
             LEVEL++
-            MAIN_WON_MESSAGE.classList.add('hide')
+
             startGame()
             return;
         }
@@ -184,6 +202,3 @@ function onClick(event) {
 MAIN.addEventListener("click", onClick);
 startGame()
 
-
-
-createPlayerWonMessage()
