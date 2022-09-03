@@ -20,6 +20,7 @@ body {
 .header__title {
     font-family: "Fredericka the Great", cursive;
     padding: 10px;
+    user-select: none;
 }
 .main {
     height: 100%;
@@ -44,6 +45,7 @@ body {
     text-align: center;
     margin: 0px 0px 10px 0px;
     font-size: 20px;
+    user-select: none;
 }
 .hide {
     position: absolute;
