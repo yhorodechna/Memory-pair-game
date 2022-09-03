@@ -179,7 +179,7 @@ font-size: 20px;
 
     }
 } */
-@media (width < 315px)  {
+@media (width < 515px)  {
     .level__one {
         width: 180px;
     }
