@@ -3,7 +3,6 @@ body {
 }
 .wrapper {
     max-width: 1200px;
-    min-width: 300px;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -154,7 +153,7 @@ font-size: 20px;
     }
 
 }
-@media (width < 442px) {
+@media (width < 442px)  {
     .level__one {
         width: 230px;
     }
@@ -178,5 +177,33 @@ font-size: 20px;
     .won__level {
         font-size: 18px;
 
+    }
+}
+@media (width < 315px)  {
+    .level__one {
+        width: 180px;
+    }
+    .level__two {
+        width: 220px;
+    }
+    .level__three {
+        width: 220px;
+    }
+    .card,
+    .flip-container,
+    .front,
+    .back {
+        width: 46px;
+        height: 60px;
+    }
+        .main__won-message {
+        width: 200px;
+        height: 300px;
+    }
+    .won__level {
+        font-size: 14px;
+    }
+    .header__title {
+        font-size: 20px;
     }
 }
