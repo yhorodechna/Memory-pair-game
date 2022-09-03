@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(201, 177, 177);
+    background-color: #f6eee0;
 }
 .wrapper {
     max-width: 1200px;
@@ -13,11 +13,13 @@ body {
     height: 50px;
     text-align: center;
     border: 1px solid #000;
+    border-radius: 0px 0px 10px 10px;
     margin: 0px 0px 10px 0px;
+    background-color: #e4b7a0;
 }
 .header__title {
-    padding: 15px;
-    font-size: 28px;
+    font-family: "Fredericka the Great", cursive;
+    padding: 10px;
 }
 .main {
     height: 100%;
@@ -38,6 +40,7 @@ body {
     margin: 0 auto;
 }
 .main__level {
+    font-family: "Fredericka the Great", cursive;
     text-align: center;
     margin: 0px 0px 10px 0px;
     font-size: 20px;
@@ -49,11 +52,13 @@ body {
 .main__game-board {
     height: auto;
     border: 2px solid #000;
+    border-radius: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 5px;
     align-items: center;
+    background-color: #a45c40;
 }
 
 .flip-container {
@@ -70,6 +75,27 @@ body {
     height: 160px;
     user-select: none;
 }
+
+.card,
+.back__text {
+    font-family: "Special Elite", cursive;
+    font-size: 140px;
+    padding: 20px;
+    border: 1px solid #000;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-radius: 10px;
+}
+.card {
+    color: rgba(0, 0, 0, 0.443);
+    transition: all linear 0.3s;
+}
+.card:hover {
+    color: rgba(0, 0, 0);
+    transition: all linear 0.3s;
+}
 .flip-container {
     margin: 2px;
 }
@@ -84,6 +110,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+    background-color: #c38370;
+    border-radius: 10px;
 }
 .front {
     z-index: 2;
@@ -91,6 +119,12 @@ body {
 }
 .back {
     transform: rotateY(180deg);
+}
+.back__text {
+    background: url("../images/rainbow.jpeg");
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 .flip-container.hidden .back {
     opacity: 0;
@@ -102,37 +136,50 @@ body {
 }
 
 .main__won-message {
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
 }
 .won__message {
+    background-color: #a45c40be;
     border: 2px solid #000;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
+    justify-content: space-between;
 }
+.won__level,
+.won__moves,
+.won__accuracy,
+.won__button-text {
+    font-family: "Fredericka the Great", cursive;
+    font-size: 20px;
+}
+
 .won__level {
-    font-size: 24px;
+    margin: 90px 0px 0px 0px;
     padding: 10px;
-    margin: 0px 0px 40px 0px;
 }
 .won__moves {
-    font-size: 20px;
-    margin: 0px 0px 20px 0px;
 }
 .won__accuracy {
-    font-size: 20px;
-    flex: 1 1 auto;
 }
 
 .won__button {
+    background-color: #e4b7a0;
+    border-radius: 0px 0px 10px 10px;
     width: 100%;
     height: 40px;
 }
+.won__button:hover .won__button-text {
+    transition: all linear 0.3s;
+    font-size: 24px;
+}
 .won__button-text {
-    font-size: 18px;
+    text-align: center;
+    transition: all linear 0.3s;
 }
 @media (min-width: 50px) {
     .level__one {
@@ -153,13 +200,21 @@ body {
     }
     .main__won-message {
         width: 200px;
-        height: 300px;
-    }
-    .won__level {
-        font-size: 14px;
+        height: 200px;
     }
     .header__title {
         font-size: 20px;
+    }
+    .card,
+    .back__text {
+        padding: 8px;
+        font-size: 50px;
+    }
+    .main__level {
+        font-size: 16px;
+    }
+    .won__level {
+        margin: 10px 0px 0px 0px;
     }
 }
 
@@ -181,15 +236,23 @@ body {
         height: 80px;
     }
     .main__won-message {
-        width: 200px;
+        width: 300px;
         height: 300px;
     }
+    .card,
+    .back__text {
+        padding: 10px;
+        font-size: 70px;
+    }
+    .main__level {
+        font-size: 16px;
+    }
     .won__level {
-        font-size: 18px;
+        margin: 30px 0px 0px 0px;
     }
 }
 
-@media  (min-width: 492px)  {
+@media (min-width: 492px) {
     .level__one {
         width: 300px;
     }
@@ -206,8 +269,23 @@ body {
         width: 88px;
         height: 110px;
     }
+    .main__won-message {
+        width: 400px;
+        height: 400px;
+    }
+    .card,
+    .back__text {
+        padding: 10px;
+        font-size: 110px;
+    }
+    .main__level {
+        font-size: 16px;
+    }
+    .won__level {
+        margin: 60px 0px 0px 0px;
+    }
 }
-@media  (min-width: 892px)  {
+@media (min-width: 892px) {
     .level__one {
         width: 450px;
     }
@@ -223,5 +301,23 @@ body {
     .back {
         width: 120px;
         height: 160px;
+    }
+    .main__won-message {
+        width: 500px;
+        height: 500px;
+    }
+    .card,
+    .back__text {
+        padding: 20px;
+        font-size: 140px;
+    }
+    .header__title {
+        font-size: 28px;
+    }
+    .main__level {
+        font-size: 20px;
+    }
+    .won__level {
+        margin: 90px 0px 0px 0px;
     }
 }

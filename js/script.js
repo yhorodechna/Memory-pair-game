@@ -1,54 +1,4 @@
 
-const DATA = {
-    levelOne: [
-        {
-            num: 1,
-            id: 1
-        },
-        {
-            num: 2,
-            id: 2
-        },
-        {
-            num: 3,
-            id: 3
-        }
-    ],
-    levelTwo: [
-        {
-            num: 4,
-            id: 4
-        },
-        {
-            num: 5,
-            id: 5
-        },
-        {
-            num: 6,
-            id: 6
-        },
-    ],
-    levelThree: [
-        {
-            num: 7,
-            id: 7
-        },
-        {
-            num: 8,
-            id: 8
-        },
-        {
-            num: 9,
-            id: 9
-        },
-        {
-            num: 10,
-            id: 10
-        }
-    ],
-
-};
-
 const LEVEL_ONE = [...DATA.levelOne];
 const LEVEL_TWO = [...DATA.levelOne, ...DATA.levelTwo];
 const LEVEL_THREE = [...DATA.levelOne, ...DATA.levelTwo, ...DATA.levelThree];
@@ -99,10 +49,10 @@ function createGameCard({ num, id, mainGameBoardEl }) {
     <div id=${id} class="flip-container">
         <div class="flipper">
             <div class="front">
-                <img class="card" src="./images/front-side.jpeg" alt="">
+                <span class="card">?</span> 
             </div>
             <div class="back">
-                <span >${num}</span> 
+                <span class="back__text">${num}</span> 
             </div>
         </div>
     </div>
