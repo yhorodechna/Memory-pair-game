@@ -1,2 +1,2 @@
 # Memory Pair Game
-[demo](https://yhorodechna.github.io/memory-pair-game/)
+[demo](https://yhorodechna.github.io/Memory-pair-game/)
