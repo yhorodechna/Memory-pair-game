@@ -1,22 +1,86 @@
 
-const DATA = [
-    {
-        num: 1,
-        id: 1
-    },
-    {
-        num: 2,
-        id: 2
-    },
-    {
-        num: 3,
-        id: 3
+const DATA = {
+    levelOne: [
+        {
+            num: 1,
+            id: 1
+        },
+        {
+            num: 2,
+            id: 2
+        },
+        {
+            num: 3,
+            id: 3
+        }
+    ],
+    levelTwo: [
+        {
+            num: 4,
+            id: 4
+        },
+        {
+            num: 5,
+            id: 5
+        },
+        {
+            num: 6,
+            id: 6
+        },
+    ],
+    levelThree: [
+        {
+            num: 7,
+            id: 7
+        },
+        {
+            num: 8,
+            id: 8
+        },
+        {
+            num: 9,
+            id: 9
+        },
+        {
+            num: 10,
+            id: 10
+        }
+    ],
+
+};
+
+const LEVEL_ONE = [...DATA.levelOne];
+const LEVEL_TWO = [...DATA.levelOne, ...DATA.levelTwo];
+const LEVEL_THREE = [...DATA.levelOne, ...DATA.levelTwo, ...DATA.levelThree];
+
+const MAIN = document.querySelector('#main');
+const MAIN_GAME_BOARD_EL = document.querySelector('#main__game-board');
+let LEVEL = 1;
+
+function startGame() {
+    MAIN_GAME_BOARD_EL.classList.remove('hide')
+    while (MAIN_GAME_BOARD_EL.firstChild) {
+        MAIN_GAME_BOARD_EL.removeChild(MAIN_GAME_BOARD_EL.firstChild)
     }
-];
-const main = document.querySelector('#main');
-const mainGameBoardEl = document.querySelector('#main__game-board');
+    if (LEVEL === 1) {
+        fillGameBoard(LEVEL_ONE);
+        MAIN_GAME_BOARD_EL.classList.add('level__one')
+    }
+    if (LEVEL === 2) {
+        fillGameBoard(LEVEL_TWO);
+        MAIN_GAME_BOARD_EL.classList.add('level__two')
+        MAIN_GAME_BOARD_EL.classList.remove('level__one')
+    }
+    if (LEVEL >= 3) {
+        fillGameBoard(LEVEL_THREE);
+        MAIN_GAME_BOARD_EL.classList.remove('level__one')
+        MAIN_GAME_BOARD_EL.classList.remove('level__two')
+        MAIN_GAME_BOARD_EL.classList.add('level__three')
+    }
+}
+
 function createGameCard(num, id) {
-    const mainGameHtml = `
+    const gameCardHtml = `
     <div id=${id} class="flip-container">
         <div class="flipper">
             <div class="front">
@@ -28,19 +92,21 @@ function createGameCard(num, id) {
         </div>
     </div>
         `;
-    mainGameBoardEl.innerHTML += mainGameHtml;
+    MAIN_GAME_BOARD_EL.innerHTML += gameCardHtml;
 };
 
-const mainWonMessage = document.querySelector('#main__won-message');
+
+
+const MAIN_WON_MESSAGE = document.querySelector('#main__won-message');
 function createPlayerWonMessage() {
     const mainWonHtml = `
         <div class="won__message">
-            <span class="won__level" >Level 1</span>
+            <span class="won__level" >Level ${LEVEL}</span>
             <span class="won__text" >Completed!</span>
             <button class="won__button" ><span class="won__button-text" >Go to the next level</span></button>
         </div>
         `;
-    mainWonMessage.innerHTML += mainWonHtml;
+    MAIN_WON_MESSAGE.innerHTML += mainWonHtml;
 };
 
 function fillGameBoard(data) {
@@ -59,59 +125,65 @@ function fillGameBoard(data) {
     };
 
 };
-fillGameBoard(DATA);
 
-
-
-let activeCards = [];
-let hiddenCards = 0
+let ACTIVE_CARDS = [];
+let HIDDEN_CARDS = 0
 
 function onClick(event) {
     const cards = document.querySelectorAll('.flip-container');
-    const gameBoard = document.querySelector('#main__game-board');
+
     let current = event.target;
     console.log(current)
     function removeActiveClass() {
         cards.forEach(card => card.classList.remove('active'))
-        activeCards = [];
+        ACTIVE_CARDS = [];
     };
 
     function addHiddenClass() {
-        activeCards.forEach(card => card.classList.add('hidden'))
-        activeCards = [];
-        hiddenCards += 2;
+        ACTIVE_CARDS.forEach(card => card.classList.add('hidden'))
+        ACTIVE_CARDS = [];
+        HIDDEN_CARDS += 2;
 
         function hideGameBoard() {
-            gameBoard.classList.add('hide')
+            MAIN_GAME_BOARD_EL.classList.add('hide')
         }
-        if (hiddenCards === cards.length) {
+        if (HIDDEN_CARDS === cards.length) {
             console.log('win');
             hideGameBoard()
             createPlayerWonMessage()
+            return;
         };
     };
 
+
     while (current) {
         if (current.className && current.className.includes('flip-container')) {
-            if (activeCards.length < 2) {
+            if (ACTIVE_CARDS.length < 2) {
                 current.classList.add('active');
-                activeCards.push(current);
+                ACTIVE_CARDS.push(current);
             };
-            if (activeCards.length === 2 && activeCards[0].id === activeCards[1].id) {
+            if (ACTIVE_CARDS.length === 2 && ACTIVE_CARDS[0].id === ACTIVE_CARDS[1].id) {
+                MAIN_WON_MESSAGE.classList.remove('hide')
                 setTimeout(addHiddenClass, 1000);
                 return;
             };
-            if (activeCards.length === 2 && activeCards[0].id !== activeCards[1].id) {
+            if (ACTIVE_CARDS.length === 2 && ACTIVE_CARDS[0].id !== ACTIVE_CARDS[1].id) {
                 setTimeout(removeActiveClass, 1000);
                 return;
             };
         } else if (current.className && current.className.includes('won__button')) {
-            console.log('next level')
+            LEVEL++
+            MAIN_WON_MESSAGE.classList.add('hide')
+            startGame()
             return;
         }
         current = current.parentNode;
     }
 };
-main.addEventListener("click", onClick);
+
+MAIN.addEventListener("click", onClick);
+startGame()
 
 
+
+createPlayerWonMessage()
