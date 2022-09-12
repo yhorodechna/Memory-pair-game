@@ -195,7 +195,7 @@ body {
         margin: 10px 0px 0px 0px;
     }
     .flip-container {
-        margin: 0;
+        margin: 2px;
     }
 }
 
@@ -219,7 +219,7 @@ body {
         font-size: 16px;
     }
     .flip-container {
-        margin: 0;
+        margin: 2px;
     }
 }
 
