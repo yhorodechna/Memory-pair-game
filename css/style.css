@@ -265,6 +265,9 @@ body {
 }
 
 @media (min-width: 892px) {
+    .main{
+        width: 80%;
+    }
     .card,
     .flip-container,
     .front,
