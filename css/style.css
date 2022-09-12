@@ -187,6 +187,9 @@ body {
     transition: all linear 0.3s;
 }
 @media (min-width: 50px) {
+    .main{
+        width: 100%;
+    }
     .card,
     .flip-container,
     .front,
@@ -208,9 +211,15 @@ body {
     .won__level {
         margin: 10px 0px 0px 0px;
     }
+    .flip-container {
+        margin: 0;
+    }
 }
 
 @media (min-width: 330px) {
+    .main{
+        width: 100%;
+    }
     .card,
     .flip-container,
     .front,
@@ -226,9 +235,15 @@ body {
     .main__level {
         font-size: 16px;
     }
+    .flip-container {
+        margin: 0;
+    }
 }
 
 @media (min-width: 492px) {
+    .main{
+        width: 100%;
+    }
     .card,
     .flip-container,
     .front,
@@ -243,6 +258,9 @@ body {
     }
     .main__level {
         font-size: 16px;
+    }
+    .flip-container {
+        margin: 8px;
     }
 }
 
@@ -264,5 +282,8 @@ body {
     }
     .main__level {
         font-size: 20px;
+    }
+    .flip-container {
+        margin: 8px;
     }
 }
