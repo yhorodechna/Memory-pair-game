@@ -1,4 +1,3 @@
-
 const MAIN = document.querySelector('#main');
 const MAIN_GAME_BOARD_EL = document.querySelector('#main__game-board');
 const MAIN_LEVEL = document.querySelector('#main__level');
@@ -118,6 +117,7 @@ class Game {
         MAIN_GAME_BOARD_EL.classList.add('hide');
         MAIN_WON_MESSAGE_EL.innerHTML = mainWonHtml;
     };
+    
     createLevelMessage() {
         MAIN_LEVEL.classList.remove('hide');
         const levelHtml = `
@@ -126,17 +126,6 @@ class Game {
         MAIN_LEVEL.innerHTML = levelHtml;
     };
 
-    findElement(target) {
-        let current = target;
-        while (current) {
-            if (current.className && current.className.includes('flip-container')) {
-                return { flipContainer: current };
-            } else if (current.className && current.className.includes('won__button')) {
-                return { wonButton: current };
-            };
-            current = current.parentNode;
-        };
-    };
     makeActiveCardsHidden() {
         this.activeCards.forEach(card => {
             card.setState(ESTATE.hidden);
@@ -159,7 +148,8 @@ class Game {
     };
 
     onClick({ target }) {
-        const { flipContainer, wonButton } = this.findElement(target);
+        const flipContainer = target.closest('.flip-container');
+        const wonButton = target.closest('.won__button');
         if (flipContainer && this.activeCards.length < 2) {
             const currentCard = this.cardList.cards.find(card => card.id === flipContainer.id);
 

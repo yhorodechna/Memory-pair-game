@@ -7,7 +7,6 @@ body {
     margin: 0 auto;
     overflow: hidden;
 }
-
 .header {
     width: 100%;
     height: 50px;
@@ -26,10 +25,8 @@ body {
     position: relative;
     width: 80%;
     height: 100%;
-
     margin: 0 auto;
 }
-
 .main__game-board,
 .main__won-message {
     margin: 0 auto;
@@ -58,12 +55,10 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
     padding: 5px;
     align-items: center;
     background-color: #a45c40;
 }
-
 .flip-container {
     perspective: 1000px;
     margin: 8px;
@@ -79,7 +74,6 @@ body {
     height: 160px;
     user-select: none;
 }
-
 .card,
 .back__text {
     font-family: "Special Elite", cursive;
@@ -99,8 +93,6 @@ body {
 .card:hover {
     color: rgba(0, 0, 0);
     transition: all linear 0.3s;
-}
-.flip-container {
 }
 .flipper {
     transition: 0.6s;
@@ -137,7 +129,6 @@ body {
     opacity: 0;
     transition: all linear 0.5s;
 }
-
 .main__won-message {
     position: absolute;
     width: 100%;
@@ -164,14 +155,6 @@ body {
     font-family: "Fredericka the Great", cursive;
     font-size: 20px;
 }
-
-.won__level {
-}
-.won__moves {
-}
-.won__accuracy {
-}
-
 .won__button {
     background-color: #e4b7a0;
     border-radius: 0px 0px 10px 10px;
@@ -253,7 +236,6 @@ body {
     }
     .card,
     .back__text {
-
         font-size: 110px;
     }
     .main__level {
